@@ -1,5 +1,6 @@
 import type {
 	IAuthenticateGeneric,
+	Icon,
 	ICredentialTestRequest,
 	ICredentialType,
 	INodeProperties,
@@ -10,11 +11,9 @@ export class ScrapingfishApi implements ICredentialType {
 
 	displayName = 'Scrapingfish API';
 
-	// Test dummy icon - using a built-in n8n icon
-	icon = 'file:scrapingfish.svg';
+	icon = 'file:../nodes/Scrapingfish/scrapingfish.svg' as Icon;
 
-	// Link to your community node's README
-	documentationUrl = 'https://github.com/org/-scrapingfish?tab=readme-ov-file#credentials';
+	documentationUrl = 'https://scrapingfish.com/docs';
 
 	properties: INodeProperties[] = [
 		{
@@ -26,12 +25,11 @@ export class ScrapingfishApi implements ICredentialType {
 			default: '',
 		},
 	];
-
 	authenticate: IAuthenticateGeneric = {
 		type: 'generic',
 		properties: {
-			headers: {
-				'x-api-key': '={{$credentials.apiKey}}',
+			qs: {
+				api_key: '={{$credentials.apiKey}}',
 			},
 		},
 	};
@@ -39,7 +37,7 @@ export class ScrapingfishApi implements ICredentialType {
 	test: ICredentialTestRequest = {
 		request: {
 			baseURL: 'https://scraping.narf.ai/api/v1/',
-			url: '/v1/user',
+			url: 'usage',
 		},
 	};
 }
