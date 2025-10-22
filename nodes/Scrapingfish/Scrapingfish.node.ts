@@ -40,22 +40,32 @@ export class Scrapingfish implements INodeType {
 				description: 'Whether to render JavaScript on the page',
 			},
 			{
-				displayName: 'Extraction Rules',
-				name: 'extractRules',
-				type: 'json',
-				default: null,
-				placeholder: '{"title": "h1", "description": ".description"}',
-				description:
-					'Rules to extract data from the page. See <a href="https://scrapingfish.com/docs/extract-rules">docs</a>.',
-			},
-			{
-				displayName: 'JS Scenario',
-				name: 'jsScenario',
-				type: 'json',
-				default: null,
-				placeholder: '{ steps: [{wait: 1000},{click_and_wait_for_navigation: "p > a"}]}',
-				description:
-					'Rules to extract data from the page. See <a href="https://scrapingfish.com/docs/extract-rules">docs</a>.',
+				displayName: 'Additional Fields',
+				name: 'fields',
+				type: 'collection',
+				placeholder: 'Add Field',
+				default: {},
+				options: [
+					{
+						displayName: 'Extraction Rules',
+						name: 'extractRules',
+						type: 'json',
+						default: '',
+						placeholder: '{"title": "h1", "description": ".description"}',
+						description:
+							'Rules to extract data from the page. See <a href="https://scrapingfish.com/docs/extract-rules">docs</a>.',
+					},
+					{
+						displayName: 'JS Scenario',
+						name: 'jsScenario',
+						type: 'json',
+						default: '',
+						placeholder:
+							'{ "steps": [{ "wait": 1000 }, { "click_and_wait_for_navigation": "p > a" }]}',
+						description:
+							'JS instructions to execute on a page. See <a href="https://scrapingfish.com/docs/js-scenario">docs</a>.',
+					},
+				],
 			},
 		],
 	};
@@ -68,8 +78,12 @@ export class Scrapingfish implements INodeType {
 			try {
 				const url = this.getNodeParameter('url', i, '') as string;
 				const renderJs = this.getNodeParameter('renderJs', i, false) as boolean;
-				const extractRules = this.getNodeParameter('extractRules', i, null) as string | null;
-				const jsScenario = this.getNodeParameter('jsScenario', i, null) as string | null;
+				const fields = this.getNodeParameter('fields', i, {}) as {
+					extractRules?: string;
+					jsScenario?: string;
+				};
+				const extractRules = fields.extractRules;
+				const jsScenario = fields.jsScenario;
 				const credentials = await this.getCredentials('scrapingfishApi');
 
 				const qs: {

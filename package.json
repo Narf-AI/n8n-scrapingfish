@@ -5,15 +5,20 @@
 	"license": "MIT",
 	"homepage": "",
 	"keywords": [
-		"n8n-community-node-package"
+		"n8n-community-node-package",
+		"n8n-node",
+		"n8n",
+		"scrapingfish",
+		"scraping",
+		"web scraping"
 	],
 	"author": {
 		"name": "mwojciechowski",
-		"email": "maciekwoj4@gmail.com"
+		"email": "maciej.wojciechowski@narf.ai"
 	},
 	"repository": {
 		"type": "git",
-		"url": "REPOTBD"
+		"url": "https://github.com/Narf-AI/n8n-scrapingfish"
 	},
 	"scripts": {
 		"build": "n8n-node build",
