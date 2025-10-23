@@ -1,18 +1,13 @@
 # n8n-nodes-scrapingfish
 
-This is an n8n community node. It lets you use _app/service name_ in your n8n workflows.
-
-_App/service name_ is _one or two sentences describing the service this node integrates with_.
+This is an n8n community node for [Scrapingfish](https://scrapingfish.com/), a web scraping API. It allows you to scrape web pages, render JavaScript, and extract structured data directly within your n8n workflows.
 
 [n8n](https://n8n.io/) is a [fair-code licensed](https://docs.n8n.io/sustainable-use-license/) workflow automation platform.
 
 [Installation](#installation)
 [Operations](#operations)
 [Credentials](#credentials)
-[Compatibility](#compatibility)
-[Usage](#usage)
 [Resources](#resources)
-[Version history](#version-history)
 
 ## Installation
 
@@ -20,27 +15,29 @@ Follow the [installation guide](https://docs.n8n.io/integrations/community-nodes
 
 ## Operations
 
-_List the operations supported by your node._
+This node provides a single operation to scrape a URL with various options:
+
+- **URL**: The target URL to scrape.
+- **Render JS**: Enable to render JavaScript on the page.
+- **Additional Fields**:
+  - **Extraction Rules**: Define CSS selectors to extract structured JSON data.
+  - **JS Scenario**: Execute a sequence of browser actions.
+  - **Headers**: Forward custom HTTP headers.
+  - **Timeouts**: Configure request, trial, and rendering timeouts.
 
 ## Credentials
 
-_If users need to authenticate with the app/service, provide details here. You should include prerequisites (such as signing up with the service), available authentication methods, and how to set them up._
+To use this node, you need a Scrapingfish API key.
 
-## Compatibility
-
-_State the minimum n8n version, as well as which versions you test against. You can also include any known version incompatibility issues._
-
-## Usage
-
-_This is an optional section. Use it to help users with any difficult or confusing aspects of the node._
-
-_By the time users are looking for community nodes, they probably already know n8n basics. But if you expect new users, you can link to the [Try it out](https://docs.n8n.io/try-it-out/) documentation to help them get started._
+1. Sign up at [scrapingfish.com](https://scrapingfish.com/) to get your API key.
+2. In your n8n instance, go to **Credentials > New**.
+3. Search for "Scrapingfish API" and add your API key.
 
 ## Resources
 
-* [n8n community nodes documentation](https://docs.n8n.io/integrations/#community-nodes)
-* _Link to app/service documentation._
+- [n8n community nodes documentation](https://docs.n8n.io/integrations/community-nodes/)
+- [Scrapingfish API Documentation](https://scrapingfish.com/docs)
 
-## Version history
+## License
 
-_This is another optional section. If your node has multiple versions, include a short description of available versions and what changed, as well as any compatibility impact._
+MIT
