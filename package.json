@@ -18,7 +18,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/Narf-AI/n8n-scrapingfish"
+		"url": "git+https://github.com/Narf-AI/n8n-scrapingfish.git"
 	},
 	"scripts": {
 		"build": "n8n-node build",
